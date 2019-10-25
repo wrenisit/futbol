@@ -1,11 +1,5 @@
-module Game
+module GameModule
 
-  def all_games
-    csv = CSV.read("#{@game_path}", headers: true, header_converters: :symbol)
-      csv.map do |row|
-       Game.new(row)
-    end
-  end
 
   def count_of_games_by_season
     season_key_maker
