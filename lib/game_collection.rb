@@ -1,8 +1,11 @@
 require 'csv'
 require_relative 'game'
 require_relative 'stat_tracker'
+#require_relative 'game_collection_module'
 
 class GameCollection
+  #include 'Game'
+
   attr_reader :game_instances
 
   def initialize(game_path)
@@ -16,6 +19,7 @@ class GameCollection
        Game.new(row)
     end
   end
+
 
   def count_of_games_by_season
     season_key_maker
@@ -98,5 +102,4 @@ class GameCollection
     end
     ave_goals_per_season
   end
-
 end

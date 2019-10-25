@@ -1,13 +1,13 @@
 require_relative 'game_teams_collection'
 require_relative 'team_collection'
 require_relative 'game_collection'
-require_relative './game_collection_module'
+#require_relative 'game_collection_module'
 
 require 'csv'
 
 class StatTracker
-
-    include GameCollect
+    # include Game
+    attr_reader :game_collect
 
     def self.from_csv(locations)
       StatTracker.new(locations)
@@ -20,7 +20,11 @@ class StatTracker
     end
 
     def game
-      GameCollection.new(@game_path)
+      @game_collect = GameCollection.new(@game_path)
+    end
+
+    def count_of_games_by_season
+      @game_collect.count_of_games_by_season
     end
 
     def game_teams

@@ -2,6 +2,7 @@ require 'csv'
 require_relative 'stat_tracker'
 require_relative 'game_teams'
 require_relative 'game_teams_collection'
+require_relative 'game_collection'
 
 
 game_path = './data/games.csv'
@@ -16,6 +17,7 @@ locations = {
 
 stat_tracker = StatTracker.from_csv(locations)
 
+
 game_teams_array = stat_tracker.game_teams
 game_teams_array.game_teams_instances.first
 
@@ -23,4 +25,6 @@ team_array = stat_tracker.team
 team_array.team_instances.first
 
 game_array = stat_tracker.game
-game_array.game_instances.first
+game_array.game_instances.first.class
+
+ stat_tracker.game_collect.count_of_games_by_season
