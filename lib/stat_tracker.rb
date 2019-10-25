@@ -1,10 +1,13 @@
 require_relative 'game_teams_collection'
 require_relative 'team_collection'
 require_relative 'game_collection'
+require_relative 'game_collection_module'
 
 require 'csv'
 
 class StatTracker
+
+    include GameCollect
 
     def self.from_csv(locations)
       StatTracker.new(locations)
