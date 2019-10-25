@@ -1,7 +1,7 @@
 require_relative 'game_teams_collection'
 require_relative 'team_collection'
 require_relative 'game_collection'
-require_relative 'game_collection_module'
+require_relative './game_collection_module'
 
 require 'csv'
 
