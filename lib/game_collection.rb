@@ -87,14 +87,4 @@ class GameCollection
     end
   end
 
-  # def best_defense_per_season
-  #
-  #   home_team_ids = []
-  #   @game_instances.each do |instance|
-  #     home_team_ids << instance.home_team_id
-  #   end
-  #   home_team_ids.uniq!
-  #
-  # end
-
 end

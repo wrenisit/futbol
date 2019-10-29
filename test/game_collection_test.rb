@@ -59,10 +59,6 @@ class GameCollectionTest < MiniTest::Test
     assert_equal 4, @game_collection.count_of_games_by_season.count
   end
 
-  def test_best_defense_per_season
-    assert_equal 4, @game_collection.best_defense_per_season
-  end
-
   def test_home_wins
     assert_equal 8, @game_collection.home_wins
   end
