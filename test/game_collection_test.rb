@@ -49,10 +49,6 @@ class GameCollectionTest < MiniTest::Test
     assert_equal expected_value,  @game_collection.average_goals_by_season
   end
 
-  def test_initialize_data
-    assert_equal 15, @game_collection.game_instances.count
-  end
-
   def test_count_of_games
     @game_collection.count_of_games_by_season
     assert_equal Hash, @game_collection.count_of_games_by_season.class
