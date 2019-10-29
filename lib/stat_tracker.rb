@@ -6,27 +6,30 @@ require 'csv'
 
 class StatTracker
 
-    def self.from_csv(locations)
-      StatTracker.new(locations)
-    end
+  def self.from_csv(locations)
+    StatTracker.new(locations)
+  end
 
-    def initialize(locations)
-      @game_path = locations[:games]
-      @team_path = locations[:teams]
-      @game_teams_path = locations[:game_teams]
-    end
+  def initialize(locations)
+    @game_path = locations[:games]
+    @team_path = locations[:teams]
+    @game_teams_path = locations[:game_teams]
+  end
 
-    def game
-      GameCollection.new(@game_path)
-    end
+  def game
+    @game = GameCollection.new(@game_path, self) if @game.nil?
+    @game
+  end
 
-    def game_teams
-      GameTeamsCollection.new(@game_teams_path)
-    end
+  def game_teams
+    @game_teams = GameTeamsCollection.new(@game_teams_path, self) if @game_teams.nil?
+    @game_teams
+  end
 
-    def team
-      TeamCollection.new(@team_path)
-    end
+  def team
+    @team_collection = TeamCollection.new(@team_path, self) if @teams.nil?
+    @team_collection
+  end
 
   def highest_total_score
     game.highest_total_score
