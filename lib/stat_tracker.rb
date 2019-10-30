@@ -17,17 +17,17 @@ class StatTracker
   end
 
   def game
-    @game = GameCollection.new(@game_path, self) if @game.nil?
+    @game = GameCollection.new(@game_path) if @game.nil?
     @game
   end
 
   def game_teams
-    @game_teams = GameTeamsCollection.new(@game_teams_path, self) if @game_teams.nil?
+    @game_teams = GameTeamsCollection.new(@game_teams_path) if @game_teams.nil?
     @game_teams
   end
 
   def team
-    @team_collection = TeamCollection.new(@team_path, self) if @teams.nil?
+    @team_collection = TeamCollection.new(@team_path) if @teams.nil?
     @team_collection
   end
 
@@ -72,10 +72,10 @@ class StatTracker
   end
 
   def winningest_team
-    team_collection.winningest_team(game_teams_collection.winningest_team_id)
+    team.winningest_team(game_teams.winningest_team_id)
   end
 
   def worst_fans
-    team_collection.worst_fans(game_teams_collection.worst_fans)
+    team.worst_fans(game_teams.worst_fans)
   end
 end
