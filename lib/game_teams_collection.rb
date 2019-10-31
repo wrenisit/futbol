@@ -76,7 +76,9 @@ class GameTeamsCollection
   def worst_fans
     worst_fans_teams = []
     team_stat_maker
+
     @team_accumulator.map do |team|
+
       if team[1][:away_wins] > team[1][:home_wins]
         worst_fans_teams << team[0]
       end
@@ -84,4 +86,17 @@ class GameTeamsCollection
     worst_fans_teams
   end
 
+  def most_goals_scored(value)
+    most_goals = @game_teams_collection_instances.find_all do |team|
+      team.team_id == value.to_i
+    end
+    most_goals.max_by { |team| team.goals }.goals
+  end
+
+  def fewest_goals_scored(value)
+    most_goals = @game_teams_collection_instances.find_all do |team|
+      team.team_id == value.to_i
+    end
+    most_goals.min_by { |team| team.goals }.goals
+  end
 end

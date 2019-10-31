@@ -17,10 +17,8 @@ class TeamCollectionTest < MiniTest::Test
   end
 
   def test_it_initalizes
-    def test_it_initializes
-      assert_equal './dummy_data/dummy_teams.csv', @team_instance.team_path
-      assert_equal 16, @team_instance.team_instances.size
-    end
+    assert_equal './dummy_data/dummy_teams.csv', @team_instance.team_path
+    assert_equal 16, @team_instance.team_instances.size
   end
 
   def test_all_teams
@@ -64,5 +62,10 @@ class TeamCollectionTest < MiniTest::Test
   def test_worst_fans
     assert_equal ["Sporting Kansas City"], @team_instance.worst_fans(["5"])
     assert_equal ["LA Galaxy", "Houston Dynamo"], @team_instance.worst_fans(["17", "3"])
+  end
+
+  def test_team_info
+    expected = {"team_id"=> "20", "franchise_id"=> "21", "team_name"=> "Toronto FC", "abbreviation"=> "TOR", "link"=> "/api/v1/teams/20"}
+    assert_equal expected, @team_instance.team_info("20")
   end
 end

@@ -92,6 +92,19 @@ class StatTracker
   end
 
   def worst_fans
+#require "pry"; binding.pry
     team.worst_fans(game_teams.worst_fans)
+  end
+
+  def team_info(value)
+    team.team_info(value)
+  end
+
+  def most_goals_scored(value)
+    game_teams.most_goals_scored(value)
+  end
+
+  def fewest_goals_scored(value)
+    game_teams.fewest_goals_scored(value)
   end
 end
