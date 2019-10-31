@@ -13,7 +13,7 @@ class GameTeamsCollectionTest < MiniTest::Test
   def test_it_initializes
     tracker_instance = GameTeamsCollection.new('./dummy_data/dummy_game_teams.csv')
     assert_equal './dummy_data/dummy_game_teams.csv', tracker_instance.game_teams_path
-    assert_equal 16, tracker_instance.game_teams_collection_instances.size
+    assert_equal 17, tracker_instance.game_teams_collection_instances.size
   end
 
   def test_winningest_team
@@ -28,7 +28,7 @@ class GameTeamsCollectionTest < MiniTest::Test
 
   def test_team_id_maker
     new_game_tracker_instance = GameTeamsCollection.new('./dummy_data/dummy_game_teams.csv')
-    assert_equal [3, 6, 12, 30, 26, 29, 5, 9], new_game_tracker_instance.team_id_maker
+    assert_equal [3, 6, 12, 30, 26, 29, 5, 9, 8], new_game_tracker_instance.team_id_maker
   end
 
   def test_team_stat_maker
@@ -39,7 +39,7 @@ class GameTeamsCollectionTest < MiniTest::Test
 
   def test_team_id_maker
     new_game_tracker_instance = GameTeamsCollection.new('./dummy_data/dummy_game_teams.csv')
-    assert_equal [3, 6, 12, 30, 26, 29, 5, 9], new_game_tracker_instance.team_id_maker
+    assert_equal [3, 6, 12, 30, 26, 29, 5, 9, 8], new_game_tracker_instance.team_id_maker
   end
 
   def test_game_stat_maker
@@ -48,6 +48,8 @@ class GameTeamsCollectionTest < MiniTest::Test
     assert_equal expected_1, new_game_tracker_instance.game_stat_maker(5)
     expected_2 = {:away_wins=>0, :away_losses=>0, :home_wins=>0, :home_losses=>0, :all_ties=>1}
     assert_equal expected_2, new_game_tracker_instance.game_stat_maker(9)
+    expected_3 = {:away_wins=>0, :away_losses=>0, :home_wins=>0, :home_losses=>0, :all_ties=>1}
+    assert_equal expected_3, new_game_tracker_instance.game_stat_maker(8)
   end
 
   def test_worst_fans
