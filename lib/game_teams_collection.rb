@@ -37,7 +37,8 @@ class GameTeamsCollection
       away_losses: 0,
       home_wins: 0,
       home_losses: 0,
-      all_ties: 0
+      away_ties: 0,
+      home_ties: 0
     }
     @game_teams_collection_instances.each do |game|
       if game.team_id == team_id
@@ -45,12 +46,14 @@ class GameTeamsCollection
           team_data[:away_wins] += 1
         elsif game.result == "LOSS" && game.hoa == "away"
           team_data[:away_losses] += 1
+        elsif game.result == "TIE" && game.hoa == "away"
+          team_data[:away_ties] += 1
         elsif game.result == "WIN" && game.hoa == "home"
           team_data[:home_wins] += 1
         elsif game.result == "LOSS" && game.hoa == "home"
           team_data[:home_losses] += 1
-        else
-          team_data[:all_ties] += 1
+        elsif game.result == "TIE" && game.hoa == "home"
+          team_data[:home_ties] += 1
         end
       end
     end
