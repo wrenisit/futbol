@@ -115,4 +115,8 @@ class StatTrackerTest < Minitest::Test
   def test_fewest_goals_scored
     assert_equal 1, @stat_tracker.fewest_goals_scored("3")
   end
+
+  def test_best_fans
+    assert_equal "Sporting Kansas City", @stat_tracker.best_fans
+  end
 end
