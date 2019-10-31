@@ -21,7 +21,7 @@ class GameTeamsCollection
     team_stat_maker.each do |team|
       wins = team[1][:away_wins] + team[1][:home_wins]
       if wins > 0
-        losses = team[1][:away_losses] + team[1][:home_losses] + team[1][:all_ties]
+        losses = team[1][:away_losses] + team[1][:home_losses] + team[1][:away_ties] + team[1][:home_ties]
         percent = (wins + losses) / (wins).to_f
         team_percents[team[0]] = percent.round(3)
       else
@@ -106,8 +106,8 @@ class GameTeamsCollection
   def best_team_id
     @team_best = {}
     team_stat_maker.each do |team|
-      home_totals = (team[1][:home_wins] + team[1][:home_losses])
-      away_totals = (team[1][:away_wins] + team[1][:away_losses])
+      home_totals = (team[1][:home_wins] + team[1][:home_losses] + team[1][:home_ties])
+      away_totals = (team[1][:away_wins] + team[1][:away_losses] + team[1][:away_ties])
       if home_totals != 0 && away_totals != 0
         home_percent = home_totals / team[1][:home_wins].to_f.round(2)
         away_percent = away_totals / team[1][:away_wins].to_f.round(2)
