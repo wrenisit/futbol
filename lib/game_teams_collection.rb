@@ -2,7 +2,7 @@ require 'csv'
 require_relative 'game_teams'
 
 class GameTeamsCollection
-  attr_reader :game_teams_path, :game_teams_collection_instances
+  attr_reader :game_teams_path, :game_teams_collection_instances, :team_best
 
   def initialize(game_teams_path)
     @game_teams_path = game_teams_path
@@ -98,5 +98,22 @@ class GameTeamsCollection
       team.team_id == value.to_i
     end
     most_goals.min_by { |team| team.goals }.goals
+  end
+
+  def best_team_id
+    @team_best = {}
+    team_stat_maker.each do |team|
+      home_totals = (team[1][:home_wins] + team[1][:home_losses])
+      away_totals = (team[1][:away_wins] + team[1][:away_losses])
+      if home_totals != 0 && away_totals != 0
+        home_percent = home_totals / team[1][:home_wins].to_f.round(2)
+        away_percent = away_totals / team[1][:away_wins].to_f.round(2)
+          if home_percent > away_percent
+            team_best[team] = (home_percent - away_percent)
+          end
+      end
+      @team_best.flatten
+    end
+    @team_best.to_a.flatten[0].to_s
   end
 end
