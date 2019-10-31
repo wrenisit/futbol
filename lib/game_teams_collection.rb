@@ -115,8 +115,10 @@ class GameTeamsCollection
             team_best[team] = (home_percent - away_percent)
           end
       end
-      @team_best.flatten
+      @team_best.min_by {|k,v| v}
     end
     @team_best.to_a.flatten[0].to_s
+    #require 'pry'; binding.pry
+
   end
 end
