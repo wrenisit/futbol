@@ -118,7 +118,5 @@ class GameTeamsCollection
       @team_best.min_by {|k,v| v}
     end
     @team_best.to_a.flatten[0].to_s
-    #require 'pry'; binding.pry
-
   end
 end
