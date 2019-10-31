@@ -80,4 +80,8 @@ class TeamCollection
     end
     team_info_storage.find { |team| team["team_id"] == value_id }
   end
+
+  def best_fans(team_id)
+    name_finder(team_id)
+  end
 end
